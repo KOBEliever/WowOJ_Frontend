@@ -48,10 +48,10 @@ router.afterEach((to, from, failure) => {
 setTimeout(() => {
   store.dispatch("user/getLoginUser", {
     userName: "DY",
+    role: "admin",
   });
 }, 3000);
 const doMenuClick = (key: string) => {
-  console.log(key);
   router.push({
     path: key,
   });
