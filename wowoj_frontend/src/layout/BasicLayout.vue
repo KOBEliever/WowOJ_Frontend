@@ -18,8 +18,7 @@
 
 <style scoped>
 #basicLayout .header {
-  background: antiquewhite;
-  margin-bottom: 10px;
+  box-shadow: #eee 1px 1px 5px;
 }
 
 #basicLayout .content {

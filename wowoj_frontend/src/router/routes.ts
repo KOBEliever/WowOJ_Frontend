@@ -5,12 +5,12 @@ import AboutView from "@/views/AboutView.vue";
 export const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
+    name: "Problem",
     component: HomeView,
   },
   {
-    path: "/about",
-    name: "about",
+    path: "/Answer",
+    name: "Answer",
     component: AboutView,
   },
 ];
