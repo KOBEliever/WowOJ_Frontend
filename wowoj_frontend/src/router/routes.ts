@@ -16,13 +16,16 @@ export const routes: Array<RouteRecordRaw> = [
     component: AdminView,
     //权限控制
     meta: {
-      access: "canAdmin",
+      access: "admin",
     },
   },
   {
     path: "/NoAuth",
     name: "NoAuth",
     component: NoAuthView,
+    meta: {
+      hideInMenu: true,
+    },
   },
   {
     path: "/Answer",

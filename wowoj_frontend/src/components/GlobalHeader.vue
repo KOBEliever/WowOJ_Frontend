@@ -1,5 +1,5 @@
 <template>
-  <a-row id="globalHeader" style="margin-bottom: 16px" align="center">
+  <a-row id="globalHeader" align="center" :wrap="false">
     <a-col flex="auto">
       <div>
         <a-menu
@@ -18,7 +18,7 @@
               <div class="title">Wow OJ</div>
             </div>
           </a-menu-item>
-          <a-menu-item v-for="item in routes" :key="item.path"
+          <a-menu-item v-for="item in visibleRoutes" :key="item.path"
             >{{ item.name }}
           </a-menu-item>
         </a-menu>
@@ -35,11 +35,26 @@
 <script setup lang="ts">
 import { routes } from "@/router/routes";
 import { useRoute, useRouter } from "vue-router";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
+import checkAccess from "@/access/checkAccess";
+import ACCESS_ENUM from "@/access/accessEnum";
 
 const router = useRouter();
 const store = useStore();
+const visibleRoutes = computed(() => {
+  return routes.filter((item, index) => {
+    if (item.meta?.hideInMenu) {
+      return false;
+    }
+    if (
+      !checkAccess(store.state.user.loginUser, item?.meta?.access as string)
+    ) {
+      return false;
+    }
+    return true;
+  });
+});
 //默认主页
 const selectKeys = ref(["/"]);
 router.afterEach((to, from, failure) => {
@@ -48,7 +63,7 @@ router.afterEach((to, from, failure) => {
 setTimeout(() => {
   store.dispatch("user/getLoginUser", {
     userName: "DY",
-    role: "admin",
+    userRole: ACCESS_ENUM.ADMIN,
   });
 }, 3000);
 const doMenuClick = (key: string) => {
