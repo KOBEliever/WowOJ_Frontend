@@ -24,9 +24,20 @@ Mac-npm undergrade method:
 sudo npm install npm@9.5.1 -g
 ```
 
-### Project Init
+### 项目初始化
 > Vue CLI : https://cli.vuejs.org/zh/guide/
 
 > arco.design : https://arco.design/vue/
 
+### 前后端联调部分使用代码生成
+> **openapi自动生成**  
+> https://github.com/ferdikoomen/openapi-typescript-codegen
+
+```
+openapi --input ./spec.json --output ./generated --client xhr
+```
+
+macos报错 `zsh: command not found: openapi`
+
+解决方案: 将openapi加入全局环境中`npm install -g openapi-typescript-codegen`
 
