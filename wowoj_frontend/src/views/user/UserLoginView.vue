@@ -5,6 +5,7 @@
         class="form"
         label-align="left"
         auto-label-width
+        style="margin: 0 auto; max-width: 400px"
         hoverable
         :model="form"
         @submit="handleSubmit"
@@ -60,20 +61,33 @@
 import { reactive } from "vue";
 import { UserControllerService, UserLoginRequest } from "../../../generated";
 import message from "@arco-design/web-vue/es/message";
+import { useRouter } from "vue-router";
+import store from "@/store";
 
 const form = reactive({
   userAccount: "",
   userPassword: "",
 } as UserLoginRequest);
+
+const router = useRouter();
 const handleSubmit = async () => {
   const res = await UserControllerService.userLoginUsingPost(form);
   if (res.code === 0) {
-    message.success("登录成功" + JSON.stringify(res.data));
+    message.success("登录成功");
+    await store.dispatch("/user/getLoginUser");
+    await router.push({
+      path: "/",
+      replace: true,
+    });
   } else {
     message.error("登录失败" + JSON.stringify(res.message));
   }
 };
 const jumpToRegister = () => {
+  router.push({
+    path: "/user/register",
+    replace: true,
+  });
   message.info("跳转到注册页");
 };
 </script>

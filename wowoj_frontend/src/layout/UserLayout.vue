@@ -7,6 +7,7 @@
       <a-layout-footer class="footer">
         <a-link
           href="https://github.com/KOBEliever/WowOJ_Frontend"
+          style="color: white"
           target="_blank"
           :hoverable="false"
           >From a rookie named DY
@@ -17,17 +18,19 @@
 </template>
 
 <style scoped>
-#userLoginLayout .content {
-  background-image: url("../assets/background.jpg");
+#userLoginLayout {
+  background-image: url("../assets/registerBackground.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+}
+
+#userLoginLayout .content {
   margin-bottom: 5px;
   padding: 20px;
 }
 
 #userLoginLayout .footer {
-  background: white;
   position: sticky;
   bottom: 0;
   left: 0;

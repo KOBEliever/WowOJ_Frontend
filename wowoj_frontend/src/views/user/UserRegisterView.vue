@@ -32,12 +32,12 @@
           />
         </a-form-item>
         <a-form-item
-          field="userPassword"
+          field="checkPassword"
           tooltip="密码与第一次相同"
           label="重复"
         >
           <a-input-password
-            v-model="form.userPassword"
+            v-model="form.checkPassword"
             placeholder="请再次输入密码..."
             allow-clear
           />
@@ -61,16 +61,23 @@
 import { reactive } from "vue";
 import { UserControllerService, UserRegisterRequest } from "../../../generated";
 import message from "@arco-design/web-vue/es/message";
+import { useRouter } from "vue-router";
 
 const form = reactive({
   userAccount: "",
   userPassword: "",
   checkPassword: "",
 } as UserRegisterRequest);
+
+const router = useRouter();
 const handleSubmit = async () => {
   const res = await UserControllerService.userRegisterUsingPost(form);
   if (res.code === 0) {
-    message.success("注册成功" + JSON.stringify(res.data));
+    message.success("注册成功");
+    await router.push({
+      path: "/user/login",
+      replace: true,
+    });
   } else {
     message.error("注册失败" + JSON.stringify(res.message));
   }
