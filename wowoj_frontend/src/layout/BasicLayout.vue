@@ -8,9 +8,12 @@
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">
-        <a href="https://github.com/KOBEliever/WowOJ_Frontend" target="_blank"
-          >From a rookie named DY</a
-        >
+        <a-link
+          href="https://github.com/KOBEliever/WowOJ_Frontend"
+          target="_blank"
+          :hoverable="false"
+          >From a rookie named DY
+        </a-link>
       </a-layout-footer>
     </a-layout>
   </div>

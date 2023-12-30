@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <template v-if="route.path.startsWith('/user')">
-      <router-view />
+      <UserLayout />
     </template>
     <template v-else>
       <BasicLayout />
@@ -19,6 +19,7 @@ import BasicLayout from "@/layout/BasicLayout.vue";
 import { onMounted } from "vue";
 import "@/access/index";
 import { useRoute } from "vue-router";
+import UserLayout from "@/layout/UserLayout.vue";
 
 const route = useRoute();
 const doInit = () => {
