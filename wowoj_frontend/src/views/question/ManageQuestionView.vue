@@ -4,12 +4,15 @@
       :ref="tableRef"
       :columns="columns"
       :data="dataList"
+      :scroll="scroll"
       :pagination="{
         showTotal: true,
         pageSize: searchParams.pageSize,
         current: searchParams.pageNum,
         total,
       }"
+      column-resizable
+      :bordered="{ cell: true }"
     >
       <template #optional="{ record }">
         <a-space>
@@ -36,6 +39,10 @@ const show = ref(true);
 const tableRef = ref();
 
 const dataList = ref([]);
+const scroll = {
+  x: 2000,
+  y: 200,
+};
 const total = ref(0);
 const searchParams = ref({
   pageSize: 10,
@@ -67,50 +74,75 @@ const columns = [
   {
     title: "id",
     dataIndex: "id",
+    width: 100,
   },
   {
     title: "标题",
     dataIndex: "title",
+    width: 150,
+    ellipsis: true,
+    tooltip: true,
   },
   {
     title: "内容",
     dataIndex: "content",
+    width: 150,
+    ellipsis: true,
+    tooltip: true,
   },
   {
     title: "标签",
     dataIndex: "tags",
+    width: 150,
+    ellipsis: true,
+    tooltip: true,
   },
   {
     title: "答案",
     dataIndex: "answer",
+    width: 150,
+    ellipsis: true,
+    tooltip: true,
   },
   {
     title: "提交数",
     dataIndex: "submitNum",
+    width: 100,
   },
   {
     title: "通过数",
     dataIndex: "acceptedNum",
+    width: 100,
   },
   {
     title: "判题配置",
     dataIndex: "judgeConfig",
+    width: 150,
+    ellipsis: true,
+    tooltip: true,
   },
   {
     title: "判题用例",
     dataIndex: "judgeCase",
+    width: 150,
+    ellipsis: true,
+    tooltip: true,
   },
   {
     title: "用户id",
     dataIndex: "userId",
+    width: 100,
   },
   {
     title: "创建时间",
     dataIndex: "createTime",
+    width: 120,
   },
   {
     title: "操作",
     slotName: "optional",
+    fixed: "right",
+    width: 120,
   },
 ];
 
