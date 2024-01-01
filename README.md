@@ -46,4 +46,8 @@ macos报错 `zsh: command not found: openapi`
   * https://github.com/bytedance/bytemd
   * `npm i @bytemd/vue-next`
   * `npm i @bytemd/plugin-highlight @bytemd/plugin-gfm`
-* 
+* 代码编辑器 monaco editor
+  * https://github.com/microsoft/monaco-editor
+  * https://github.com/microsoft/monaco-editor/blob/main/docs/integrate-esm.md
+  * `npm install monaco-editor`
+  * vue-cli项目: https://github.com/microsoft/monaco-editor/blob/main/webpack-plugin/README.md `npm install monaco-editor-webpack-plugin`
