@@ -25,7 +25,6 @@ export default {
           userRole: ACCESS_ENUM.NOT_LOGIN,
         });
       }
-      //TODO 改成远程登录
     },
   },
 } as StoreOptions<any>;

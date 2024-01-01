@@ -67,6 +67,7 @@ setTimeout(() => {
   });
 }, 3000);
 const doMenuClick = (key: string) => {
+  console.log(key);
   router.push({
     path: key,
   });

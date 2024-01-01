@@ -41,3 +41,9 @@ macos报错 `zsh: command not found: openapi`
 
 解决方案: 将openapi加入全局环境中`npm install -g openapi-typescript-codegen`
 
+### 页面组件来源
+* Markdown 编辑器
+  * https://github.com/bytedance/bytemd
+  * `npm i @bytemd/vue-next`
+  * `npm i @bytemd/plugin-highlight @bytemd/plugin-gfm`
+* 
