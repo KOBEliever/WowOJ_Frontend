@@ -25,14 +25,12 @@
 }
 
 #basicLayout .content {
-  background: linear-gradient(to right, #bbb, #fff);
   margin-bottom: 10px;
   padding: 20px;
 }
 
 #basicLayout .footer {
-  background: azure;
-  padding: 10px;
+  background: white;
   position: sticky;
   bottom: 0;
   left: 0;
