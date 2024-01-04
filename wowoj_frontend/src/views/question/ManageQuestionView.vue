@@ -8,11 +8,12 @@
       :pagination="{
         showTotal: true,
         pageSize: searchParams.pageSize,
-        current: searchParams.pageNum,
+        current: searchParams.current,
         total,
       }"
       column-resizable
       :bordered="{ cell: true }"
+      @page-change="onPageChange"
     >
       <template #optional="{ record }">
         <a-space>
@@ -25,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import {
   Page_Question_,
   Question,
@@ -45,8 +46,8 @@ const scroll = {
 };
 const total = ref(0);
 const searchParams = ref({
-  pageSize: 10,
-  pageNum: 1,
+  pageSize: 1,
+  current: 1,
 });
 
 const loadData = async () => {
@@ -60,6 +61,12 @@ const loadData = async () => {
     message.error("加载失败，" + res.message);
   }
 };
+/**
+ * 监听 searchParams 变量，改变时触发页面的重新加载
+ */
+watchEffect(() => {
+  loadData();
+});
 
 /**
  * 页面加载时，请求数据
@@ -67,8 +74,6 @@ const loadData = async () => {
 onMounted(() => {
   loadData();
 });
-
-// {id: "1", title: "A+ D", content: "新的题目内容", tags: "["二叉树"]", answer: "新的答案", submitNum: 0,…}
 
 const columns = [
   {
@@ -167,6 +172,12 @@ const doUpdate = (question: Question) => {
       id: question.id,
     },
   });
+};
+const onPageChange = (page: number) => {
+  searchParams.value = {
+    ...searchParams.value,
+    current: page,
+  };
 };
 </script>
 
